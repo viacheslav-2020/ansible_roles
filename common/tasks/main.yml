@@ -1,0 +1,8 @@
+---
+# tasks file for common
+- name: ensure environment is on
+  apt: name={{item}} state=installed
+  with_items:
+    - tree
+    - mc
+    - net-tools

@@ -1,0 +1,3 @@
+# defaults file for production
+#dest_folder=/var/lib/tomcat8/webapps
+#src_folder=/home/boxfuse/boxfuse-sample-java-war-hello/target

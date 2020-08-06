@@ -1,0 +1,24 @@
+---
+# tasks file for build
+- name: Ensure required environment to build javaapp is on
+  apt: name={{item}} state=installed
+  with_items:
+    - default-jdk
+    - git
+    - maven
+
+- name: Create buildingapp directory
+  file:
+    path: /home/boxfuse
+    state: directory
+    mode: '0755'
+
+- name: Clone git repository of boxfuse
+  git:
+    repo: https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
+    dest: "{{ dest_folder }}"
+
+- name: build the app
+  shell:
+    cmd: mvn package
+    chdir: "{{ dest_folder }}"
